@@ -1,3 +1,4 @@
 /node_modules
 pnpm-lock.yaml
 .husky/_
+config.local.js

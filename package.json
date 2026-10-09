@@ -5,6 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "cross-env _ENV=local nodemon index.js",
+		"dev:test": "cross-env _ENV=test nodemon index.js",
+		"dev:prod": "cross-env _ENV=prod nodemon index.js",
 		"build:test": "cross-env _ENV=test",
 		"build:prod": "cross-env _ENV=prod",
 		"lint": "eslint .",
