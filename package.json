@@ -4,6 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"dev": "cross-env _ENV=local nodemon index.js",
+		"build:test": "cross-env _ENV=test",
+		"build:prod": "cross-env _ENV=prod",
 		"lint": "eslint .",
 		"prepare": "husky"
 	},
@@ -58,11 +61,12 @@
 		"babel-loader": "^10.1.1",
 		"clean-webpack-plugin": "^4.0.0",
 		"consoler": "^0.2.0",
+		"cross-env": "^10.1.0",
 		"css-loader": "^7.1.5",
 		"css-minimizer-webpack-plugin": "^8.0.0",
 		"directory-named-webpack-plugin": "^4.1.0",
 		"eslint": "^10.12.0",
-		"eslint-plugin-import": "^2.32.0",
+		"eslint-plugin-import-x": "^4.17.1",
 		"eslint-plugin-vue": "^10.11.1",
 		"express": "^5.2.1",
 		"file-loader": "^6.2.0",
