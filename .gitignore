@@ -2,3 +2,4 @@
 pnpm-lock.yaml
 .husky/_
 config.local.js
+logs

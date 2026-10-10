@@ -42,10 +42,6 @@ module.exports = {
 		middlewareLoader(app)
 		// 加载 routerSchema
 		routerSchemaLoader(app)
-		// 加载 controller
-		controllerLoader(app)
-		// 加载 service
-		serviceLoader(app)
 		// 加载 config
 		configLoader(app)
 		// 加载 extend
@@ -59,7 +55,10 @@ module.exports = {
 		} catch {
 			console.error("[Execption] there is no middleware file")
 		}
-
+		// 加载 service
+		serviceLoader(app)
+		// 加载 controller
+		controllerLoader(app)
 		// 注册 router 路由
 		routerLoader(app)
 
