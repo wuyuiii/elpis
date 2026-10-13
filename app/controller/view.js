@@ -5,7 +5,7 @@ module.exports = (app) => {
 		 * @param {object} ctx 上下文
 		 */
 		async renderPage(ctx) {
-			await ctx.render(`dist/entry.${ctx.params.page}`, {
+			await ctx.render(`dist/${ctx.params.page}`, {
 				name: app.options?.name,
 				options: JSON.stringify(app.options),
 				env: app.env?.get(),

@@ -43,5 +43,9 @@ export default defineConfig([
 			globals: { ...globals.browser },
 			parserOptions: { ecmaVersion: "latest", sourceType: "module" },
 		},
+		rules: {
+			// 允许 index.vue / page1.vue 等单词组件名(路由入口文件常用)
+			"vue/multi-word-component-names": "off",
+		},
 	},
 ])

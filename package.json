@@ -7,8 +7,8 @@
 		"dev": "cross-env _ENV=local nodemon index.js",
 		"dev:test": "cross-env _ENV=test nodemon index.js",
 		"dev:prod": "cross-env _ENV=prod nodemon index.js",
-		"build:test": "cross-env _ENV=test",
-		"build:prod": "cross-env _ENV=prod",
+		"build:test": "cross-env _ENV=test node --max_old_space_size=4096 ./app/webpack/build-test.js",
+		"build:prod": "cross-env _ENV=prod node ./app/webpack/build-prod.js",
 		"lint": "eslint .",
 		"prepare": "husky"
 	},
