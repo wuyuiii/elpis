@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "../public/dist")))
 app.use(
 	devMiddleware(compiler, {
 		// 落地文件
-		writeToDisk: (filePath) => filePath.endsWith(".html"),
+		writeToDisk: (filePath) => filePath.endsWith(".tpl"),
 		// 资源路径
 		publicPath: webpackTestConfig.output.publicPath,
 		// headers 配置

@@ -1,6 +1,3 @@
-import { createApp } from "vue"
-import page2 from "./index.vue"
-
-const app = createApp(page2)
-
-app.mount("#root")
+import page1 from "./index.vue"
+import main from "$pages/main"
+main(page1)

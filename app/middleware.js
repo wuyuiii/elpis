@@ -8,7 +8,7 @@ module.exports = (app) => {
 	const koaNunjucks = require("koa-nunjucks-2")
 	app.use(
 		koaNunjucks({
-			ext: "html",
+			ext: "tpl",
 			path: path.resolve(process.cwd(), "./app/public"),
 			nunjucksConfig: {
 				noCache: true,

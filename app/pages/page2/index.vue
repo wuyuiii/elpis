@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from "vue"
-import utils from "$common/utils";
 
-console.log(utils);
 const content = ref("")
 </script>
 

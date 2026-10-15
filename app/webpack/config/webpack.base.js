@@ -3,6 +3,9 @@ const { globSync } = require("glob")
 const { VueLoaderPlugin } = require("vue-loader")
 const { ProvidePlugin, DefinePlugin } = require("webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const AutoImport = require("unplugin-auto-import/webpack")
+const Components = require("unplugin-vue-components/webpack")
+const { ElementPlusResolver } = require("unplugin-vue-components/resolvers")
 
 // 动态构造entry和 htmlWebpackPlugin
 const pageEntries = {}
@@ -11,19 +14,21 @@ const htmlWebpackPluginList = []
 globSync("app/pages/**/main.js").forEach((file) => {
 	const folder = file.split(path.sep)[2]
 
-	// 构造entry
-	pageEntries[folder] = path.resolve(process.cwd(), file)
-	// 构造最终渲染的页面文件
-	htmlWebpackPluginList.push(
-		new HtmlWebpackPlugin({
-			// 模板输出路径
-			filename: path.resolve(process.cwd(), "./app/public/dist/", `${folder}.html`),
-			// 指定使用的模板文件
-			template: path.resolve(process.cwd(), "./app/view/index.html"),
-			// 要注入的代码块
-			chunks: [folder],
-		}),
-	)
+	if (!folder.includes(".js")) {
+		// 构造entry
+		pageEntries[folder] = path.resolve(process.cwd(), file)
+		// 构造最终渲染的页面文件
+		htmlWebpackPluginList.push(
+			new HtmlWebpackPlugin({
+				// 模板输出路径
+				filename: path.resolve(process.cwd(), "./app/public/dist/", `${folder}.tpl`),
+				// 指定使用的模板文件
+				template: path.resolve(process.cwd(), "./app/view/index.tpl"),
+				// 要注入的代码块
+				chunks: [folder],
+			}),
+		)
+	}
 })
 
 /**
@@ -105,6 +110,8 @@ module.exports = {
 		// 把第三方库暴露到 window对象上
 		new ProvidePlugin({
 			Vue: "vue",
+			axios: "axios",
+			_: "lodash",
 		}),
 		// 初始化全局常量
 		new DefinePlugin({
@@ -114,6 +121,12 @@ module.exports = {
 		}),
 		// 构造最终渲染的页面模板
 		...htmlWebpackPluginList,
+		AutoImport({
+			resolvers: [ElementPlusResolver()],
+		}),
+		Components({
+			resolvers: [ElementPlusResolver()],
+		}),
 	],
 	// 配置打包输出优化（代码分割，合并，缓存，TreeShaking，压缩等优化策略）
 	optimization: {
