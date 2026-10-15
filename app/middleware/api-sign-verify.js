@@ -21,7 +21,7 @@ module.exports = (app) => {
 		app.logger.info(`[SignVerify -- ${method} | ${path}] signature:${signature}`)
 
 		if (!sSgin || !st || signature !== sSgin.toLowerCase() || Date.now() - st > 300 * 1000) {
-			ctx.status = 403
+			ctx.status = 200
 			ctx.body = {
 				sucess: false,
 				message: "api请求异常, 签名错误",

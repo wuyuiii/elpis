@@ -17,6 +17,16 @@ module.exports = (app) => {
 		}),
 	)
 
+	// 静态资源托管 — 让 webpack 产出的 /dist/...js、/dist/...css 等能被直接访问
+	// (必须放在 router 之前,否则会被 router 的 *splat 兜底吞掉)
+	const koaStatic = require("koa-static")
+	app.use(
+		koaStatic(path.resolve(process.cwd(), "./app/public"), {
+			// 不重定向尾斜杠,避免把 /dist/prod 重定向到 /
+			redirect: false,
+		}),
+	)
+
 	// 引入ctx.body 解析中间件
 	const bodyParser = require("koa-bodyparser")
 	app.use(
