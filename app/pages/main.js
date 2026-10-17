@@ -2,7 +2,9 @@ import { createApp } from "vue"
 import ElementPlus from "element-plus"
 import "element-plus/dist/index.css"
 import { createRouter, createWebHistory } from "vue-router"
+import * as ElementPlusIconsVue from "@element-plus/icons-vue"
 import { pinia } from "$store/index.js"
+import "./assets/common.css"
 
 /**
  * vue页面主入口，用于启动vue
@@ -14,6 +16,12 @@ export default (pageComponent, options = {}) => {
 	const { routes, libs } = options
 	// 引入elementplus
 	app.use(ElementPlus)
+
+	// 注册全部图标
+	for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+		app.component(key, component)
+	}
+
 	// 引入pinia
 	app.use(pinia)
 
