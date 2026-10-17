@@ -10,7 +10,8 @@
 		"build:test": "cross-env _ENV=test node --max_old_space_size=4096 ./app/webpack/build-test.js",
 		"build:prod": "cross-env _ENV=prod node ./app/webpack/build-prod.js",
 		"lint": "eslint .",
-		"prepare": "husky"
+		"prepare": "husky",
+		"test": "cross-env _ENV=local mocha test/**/*.js"
 	},
 	"repository": {
 		"type": "git",
@@ -22,6 +23,7 @@
 	"packageManager": "pnpm@10.10.0",
 	"dependencies": {
 		"@babel/core": "^8.0.7",
+		"@element-plus/icons-vue": "^2.3.2",
 		"ajv": "^8.20.0",
 		"axios": "^1.20.0",
 		"echarts": "^6.1.0",

@@ -21,7 +21,7 @@ module.exports = {
 	 * 		homePath 项目根地址
 	 * }
 	 */
-	start(options) {
+	async start(options) {
 		// Koa实例
 		const app = new Koa()
 
@@ -70,5 +70,7 @@ module.exports = {
 		} catch (e) {
 			console.error(e)
 		}
+
+		return app
 	},
 }

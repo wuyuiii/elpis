@@ -9,7 +9,7 @@ import { defineConfig } from "eslint/config"
 
 export default defineConfig([
 	{
-		ignores: ["node_modules/**", "dist/**", "build/**", ".husky/**"],
+		ignores: ["node_modules/**", "dist/**", "build/**", ".husky/**", "docs/**"],
 	},
 	// 基础 JS 规则（前后端共用,ESM 解析,适用于 .js / .mjs）
 	{
