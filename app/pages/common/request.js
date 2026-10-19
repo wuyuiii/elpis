@@ -101,4 +101,13 @@ const request = new AxiosRequest({
 	baseUrl: "http://localhost:3000",
 })
 
+// export const a = {
+// 	request,
+// 	get: request.get,
+// 	post: request.post,
+// 	put: request.put,
+// 	patch: request.patch,
+// 	delete: request.delete,
+// }
+
 export { request }

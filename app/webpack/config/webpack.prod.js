@@ -17,8 +17,8 @@ const webpackProdConfig = merge(webpackBaseConfig, {
 	// 产物输出配置，因为开发和生产环境输出不一致，所以在各自环境中配置
 	output: {
 		filename: "js/[name]_[chunkhash:8].bundle.js",
-		path: path.join(process.cwd(), `./app/public/dist/${currentENV}`),
-		publicPath: `/dist/${currentENV}`,
+		path: path.join(process.cwd(), `./app/public/dist/${currentENV}/`),
+		publicPath: `/dist/${currentENV}/`,
 		crossOriginLoading: "anonymous",
 	},
 	// webpack 5 内置 filesystem cache,无需 happypack 也能高效增量构建

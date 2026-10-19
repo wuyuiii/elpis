@@ -152,6 +152,7 @@ module.exports = {
 				},
 				common: {
 					// 公共模块
+					test: /[\\/]common|components[\\/]/,
 					name: "common",
 					minChunks: 2, // 指定被2个及以上引用的就是公共模块
 					minSize: 1, // 最小分割文件大小 (测试 1byte)

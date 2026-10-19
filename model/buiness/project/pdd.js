@@ -1,11 +1,30 @@
 module.exports = {
 	name: "拼多多",
 	desc: "拼多多电商系统",
-	homePage: "",
+	homePage: "/todo?project_key=pdd&key=product",
 	menu: [
 		{
 			key: "product",
 			name: "商品管理(拼多多)",
+			menuType: "group",
+			subMenu: [
+				{
+					key: "subMenu1",
+					name: "subMenu1",
+					menuType: "group",
+					subMenu: [
+						{
+							key: "sub-subMenu1",
+							name: "sub-subMenu1",
+							menuType: "module",
+							moduleType: "custom",
+							customConfig: {
+								path: "/todo",
+							},
+						},
+					],
+				},
+			],
 		},
 		{
 			key: "client",

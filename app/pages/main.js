@@ -1,7 +1,7 @@
 import { createApp } from "vue"
 import ElementPlus from "element-plus"
 import "element-plus/dist/index.css"
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHashHistory } from "vue-router"
 import * as ElementPlusIconsVue from "@element-plus/icons-vue"
 import { pinia } from "$store/index.js"
 import "./assets/common.css"
@@ -37,11 +37,14 @@ export default (pageComponent, options = {}) => {
 	// 这里的路由是作为CSR渲染（客户端渲染）
 	if (routes && Array.isArray(routes) && routes.length) {
 		const router = createRouter({
-			history: createWebHistory(),
+			history: createWebHashHistory(),
 			routes: routes,
 		})
 
-		app.use(router).mount("#root")
+		app.use(router)
+		router.isReady().then(() => {
+			app.mount("#root")
+		})
 	} else {
 		app.mount("#root")
 	}

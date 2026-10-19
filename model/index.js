@@ -101,6 +101,7 @@ module.exports = (_app) => {
 				modelItem.project = {}
 			}
 			modelItem.project[projectKey] = {
+				modelKey: modelKey,
 				key: projectKey,
 				...require(fileFullPath),
 			}
