@@ -30,6 +30,7 @@ const onMenuSelect = (menuItem) => {
 		custom: customConfig?.path,
 	}
 
+
 	router.push({
 		path: pathMap[moduleType],
 		query: {
@@ -46,7 +47,7 @@ const onMenuSelect = (menuItem) => {
       :project-name="menuStore.projectName"
       @menu-select="onMenuSelect"
     >
-      <template #extend-content>
+      <template #main-content>
         <router-view />
       </template>
     </HeaderView>

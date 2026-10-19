@@ -44,6 +44,22 @@ module.exports = {
 							path: "/todo",
 						},
 					},
+					{
+						key: "test",
+						name: "测试sider submenu",
+						menuType: "group",
+						subMenu: [
+							{
+								key: "test-submenu",
+								name: "测试sider subMenu subMenu",
+								menuType: "module",
+								moduleType: "custom",
+								customConfig: {
+									path: "/todo",
+								},
+							},
+						],
+					},
 				],
 			},
 		},

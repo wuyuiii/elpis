@@ -35,6 +35,9 @@ export const useMenuStore = defineStore("menu", () => {
 	const findMenuItem = ({ key, value } = {}, list = menuList.value) => {
 		for (let i = 0; i < list.length; i++) {
 			const item = list[i]
+			if (!item) {
+				continue
+			}
 			const { menuType, moduleType } = item
 
 			if (item[key] === value) {
@@ -58,5 +61,16 @@ export const useMenuStore = defineStore("menu", () => {
 		}
 	}
 
-	return { menuList, projectName, setMenuList, getMenuList, findMenuItem }
+	const findFirstMenuItem = (list = menuList.value) => {
+		if (!list || !list[0]) return
+
+		let first = list[0]
+
+		if (Array.isArray(first?.subMenu) && first.subMenu.length > 0) {
+			first = findFirstMenuItem(first.subMenu)
+		}
+		return first
+	}
+
+	return { menuList, projectName, setMenuList, getMenuList, findMenuItem, findFirstMenuItem }
 })

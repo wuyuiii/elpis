@@ -26,11 +26,11 @@ routes.push({
 			component: () => import("../views/iframe-view/iframe-view.vue"),
 		},
 		{
-			path: "/schema",
+			path: "schema",
 			component: () => import("../views/schema-view/schema-view.vue"),
 		},
 		{
-			path: "/todo",
+			path: "todo",
 			component: () => import("../todo/todo.vue"),
 		},
 	],

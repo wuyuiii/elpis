@@ -1,16 +1,15 @@
 <script setup>
-import {ref} from 'vue'
+import { ref } from "vue"
 defineProps({
-    title:{
-        type:String,
-        default:''
-    }
+	title: {
+		type: String,
+		default: "",
+	},
 })
 
-const userName = ref('ichl')
-const handleUserCommand = (event)=>{
-    console.log(event);
-
+const userName = ref("ichl")
+const handleUserCommand = (event) => {
+	console.log(event)
 }
 </script>
 
@@ -75,66 +74,69 @@ const handleUserCommand = (event)=>{
     </el-header>
     <el-main class="main-container">
       <!-- 外部拓展 -->
-      <slot name="extend-content" />
+      <slot name="main-content" />
     </el-main>
   </el-container>
 </template>
 
 <style lang="less" scoped>
 .header-container {
-    height: 100%;
-    min-width: 1000px;
-    overflow: hidden;
+	height: 100%;
+	min-width: 1000px;
+	overflow: hidden;
 
-    .header{
-        max-height: 120px;
-        width: 100%;
-        border-bottom: 1px solid #e8e8e8;
-        .header-row {
-            width: 100%;
-            height: 100%;
-            padding: 0 20px;
-            .title-panel{
-                width: 180px;
-                min-width: 180px;
-                .logo{
-                    margin-right: 10px;
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                }
-                .text{
-                    font-size: 15px;
-                    font-weight: 500;
-                }
-            }
+	.header {
+		max-height: 120px;
+		width: 100%;
+		border-bottom: 1px solid #e8e8e8;
+		.header-row {
+			width: 100%;
+			height: 100%;
+			padding: 0 20px;
+			.title-panel {
+				width: 180px;
+				min-width: 180px;
+				.logo {
+					margin-right: 10px;
+					width: 40px;
+					height: 40px;
+					border-radius: 50%;
+				}
+				.text {
+					font-size: 15px;
+					font-weight: 500;
+				}
+			}
 
-            .menu-panel{
-                flex:1;
-                height: 100%;
-            }
+			.menu-panel {
+				flex: 1;
+				height: 100%;
+			}
 
-            .setting-panel{
-                .avatar{
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    margin-right: 10px;
-                }
-                .username {
-                    font-size: 16px;
-                    font-weight: 500;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                }
-            }
-        }
-    }
-    .main-container{}
+			.setting-panel {
+				.avatar {
+					width: 30px;
+					height: 30px;
+					border-radius: 50%;
+					margin-right: 10px;
+				}
+				.username {
+					font-size: 16px;
+					font-weight: 500;
+					cursor: pointer;
+					display: flex;
+					align-items: center;
+				}
+			}
+		}
+	}
+	.main-container {
+		height: 100%;
+		padding: 0;
+	}
 }
 
-::deep(.el-header){
-    padding: 0;
+::deep(.el-header) {
+	padding: 0;
 }
 </style>

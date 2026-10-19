@@ -35,7 +35,7 @@ onMounted(() => {
 
 <template>
   <HeaderContainer title="测试">
-    <template #extend-content>
+    <template #main-content>
       <div v-loading="loading">
         <div
           v-for="item in modelList"
