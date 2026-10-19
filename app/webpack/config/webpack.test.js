@@ -36,8 +36,8 @@ const webpackTestConfig = merge(webpackBaseConfig, {
 	// 产物输出配置，因为开发和生产环境输出不一致，所以在各自环境中配置
 	output: {
 		filename: "js/[name]_[chunkhash:8].bundle.js",
-		path: path.join(process.cwd(), `./app/public/dist/${currentENV}`),
-		publicPath: `http://${HOST}:${PORT}/public/dist/${currentENV}`,
+		path: path.join(process.cwd(), `./app/public/dist/${currentENV}/`),
+		publicPath: `http://${HOST}:${PORT}/public/dist/${currentENV}/`,
 		crossOriginLoading: "anonymous",
 		globalObject: "this",
 	},

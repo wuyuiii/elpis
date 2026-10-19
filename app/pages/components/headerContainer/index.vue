@@ -28,11 +28,6 @@ const handleUserCommand = (event)=>{
           align="middle"
           class="title-panel"
         >
-          <!-- <img
-            src="./assets/avatar.png"
-            alt=""
-            class="logo"
-          > -->
           <el-row class="text">
             {{ title }}
           </el-row>
@@ -130,6 +125,8 @@ const handleUserCommand = (event)=>{
                     font-size: 16px;
                     font-weight: 500;
                     cursor: pointer;
+                    display: flex;
+                    align-items: center;
                 }
             }
         }
