@@ -13,82 +13,82 @@ const activeKey = ref('')
 const menuList = ref([])
 
 const setActive = () => {
-    const siderMenu = menuStore.findMenuItem({
-        key: 'key',
-        value: route.query?.sider_key
+  const siderMenu = menuStore.findMenuItem({
+    key: 'key',
+    value: route.query?.sider_key
+  })
+
+
+  // 首次加载时用户未选中左侧菜单，默认选择第一个
+  if (!siderMenu) {
+    const menuItem = menuStore.findMenuItem({
+      key: 'key',
+      value: route.query?.key
     })
 
+    if (menuItem && menuItem.siderConfig && Array.isArray(menuItem.siderConfig.menu)) {
+      const firstItem = menuStore.findFirstMenuItem(menuItem.siderConfig.menu) // 找出菜单第一项
 
-    // 首次加载时用户未选中左侧菜单，默认选择第一个
-    if (!siderMenu) {
-        const menuItem = menuStore.findMenuItem({
-            key: 'key',
-            value: route.query?.key
-        })
+      if (firstItem) {
+        handleMenuSelect(firstItem.key)
+        activeKey.value = firstItem.key
+      }
 
-        if (menuItem && menuItem.siderConfig && Array.isArray(menuItem.siderConfig.menu)) {
-            const firstItem = menuStore.findFirstMenuItem(menuItem.siderConfig.menu) // 找出菜单第一项
-
-            if (firstItem) {
-                handleMenuSelect(firstItem.key)
-                activeKey.value = firstItem.key
-            }
-
-        }
-    } else {
-        activeKey.value = siderMenu.key
     }
+  } else {
+    activeKey.value = siderMenu.key
+  }
 
 }
 
 const setMenuList = () => {
-    const menu = menuStore.findMenuItem({
-        key: 'key',
-        value: route.query?.key
-    })
-    if (menu && menu.siderConfig && Array.isArray(menu.siderConfig.menu)) {
-        menuList.value = menu.siderConfig.menu
-    }
+  const menu = menuStore.findMenuItem({
+    key: 'key',
+    value: route.query?.key
+  })
+  if (menu && menu.siderConfig && Array.isArray(menu.siderConfig.menu)) {
+    menuList.value = menu.siderConfig.menu
+  }
 }
 
 
 watch(() => route.query?.key, (newV, oldV) => {
-    if (newV === oldV) return
-    setActive()
-    setMenuList()
+  if (newV === oldV) return
+  setActive()
+  setMenuList()
 })
 
 watch(() => menuStore.menuList, () => {
-    setActive()
-    setMenuList()
+  setActive()
+  setMenuList()
 })
 
 onMounted(() => {
-    setActive()
-    setMenuList()
+  setActive()
+  setMenuList()
 })
 
 const onMenuSelect = (value) => {
-    handleMenuSelect(value)
+  handleMenuSelect(value)
 }
 
 const handleMenuSelect = (menuKey) => {
-    const menuItem = menuStore.findMenuItem({ key: 'key', value: menuKey }) || {}
-    const { moduleType, customConfig } = menuItem
+  const menuItem = menuStore.findMenuItem({ key: 'key', value: menuKey }) || {}
+  const { moduleType, customConfig } = menuItem
 
-    const pathMap = {
-        iframe: '/iframe',
-        schema: '/shcema',
-        custom: customConfig?.path
+  const pathMap = {
+    iframe: '/iframe',
+    schema: '/schema',
+    custom: customConfig?.path
+  }
+
+  router.push({
+    path: `/sider${pathMap[moduleType]}`,
+    query: {
+      ...route.query,
+      sider_key: menuKey
     }
-
-    router.push({
-        path: `/sider${pathMap[moduleType]}`,
-        query: {
-            ...route.query,
-            sider_key: menuKey
-        }
-    })
+  })
 }
 </script>
 

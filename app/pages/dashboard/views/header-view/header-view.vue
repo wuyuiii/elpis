@@ -92,15 +92,18 @@ const handleCommand = (value) => {
         class="project-list-container"
         @command="handleCommand"
       >
-        <span class="project-list-title">
-          {{ projectName }}
-          <el-icon
-            v-if="projectStore.projectList.length > 1"
-            class="el-icon--right"
-          >
-            <arrow-down />
-          </el-icon>
-        </span>
+        <el-button dashed>
+          <span class="project-list-title">
+            {{ projectName }}
+            <el-icon
+              v-if="projectStore.projectList.length > 1"
+              class="el-icon--right"
+            >
+              <arrow-down />
+            </el-icon>
+          </span>
+        </el-button>
+
         <template
           v-if="projectStore.projectList.length > 1"
           #dropdown
@@ -132,9 +135,9 @@ const handleCommand = (value) => {
     display: flex;
     align-items: center;
     cursor: pointer;
-    color: var(--el-color-primary);
     display: flex;
     align-items: center;
+    border: 0;
   }
 
   .active {
