@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router"
 import { useMenuStore } from "../../store/menu.js"
 import SubMenu from "../../components/subMenu.vue"
 import SiderContainer from "$components/siderContainer"
+import { PRE_PATH } from "../../router/index.js"
 
 const route = useRoute()
 const router = useRouter()
@@ -83,7 +84,7 @@ const handleMenuSelect = (menuKey) => {
   }
 
   router.push({
-    path: `/sider${pathMap[moduleType]}`,
+    path: `${PRE_PATH}/sider${pathMap[moduleType]}`,
     query: {
       ...route.query,
       sider_key: menuKey

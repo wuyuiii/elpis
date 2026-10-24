@@ -5,6 +5,7 @@ import { onMounted } from "vue"
 import { useMenuStore } from "./store/menu"
 import { useProjectStore } from "./store/project"
 import { useRoute, useRouter } from "vue-router"
+import { PRE_PATH } from './router'
 
 const route = useRoute()
 const router = useRouter()
@@ -32,7 +33,7 @@ const onMenuSelect = (menuItem) => {
 
 
 	router.push({
-		path: pathMap[moduleType],
+		path: `${PRE_PATH}${pathMap[moduleType]}`,
 		query: {
 			key: key,
 			project_key: route.query.project_key,

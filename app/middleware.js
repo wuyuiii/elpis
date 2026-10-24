@@ -42,4 +42,6 @@ module.exports = (app) => {
 	app.use(app.middlewares.apiSignVerify)
 	// 引入api参数校验中间件
 	app.use(app.middlewares.apiParamsVerify)
+	// 引入project 数据处理中间件
+	app.use(app.middlewares.projectHandler)
 }

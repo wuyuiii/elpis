@@ -1,13 +1,13 @@
 <script setup>
+import { provide } from 'vue'
 import SearchPanel from './components/searchPanel'
 import TablePanel from './components/tablePanel'
 
 import { useSchema } from './hooks/useSchema'
 
-const { api } = useSchema()
+const { api, tableSchema, tableConfig } = useSchema()
 
-console.log(api.value);
-
+provide('schemaViewData', { api, tableSchema, tableConfig })
 </script>
 
 <template>
@@ -19,9 +19,9 @@ console.log(api.value);
 
 <style lang="less" scoped>
 .shcema-view {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 </style>

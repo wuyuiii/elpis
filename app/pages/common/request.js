@@ -23,15 +23,21 @@ class AxiosRequest {
 		const st = Date.now()
 		const sign = md5(`${SIGN_KEY}_${st}`)
 
+		const headerOptions = {
+			...headers,
+			s_sign: sign,
+			s_t: st,
+		}
+
+		if (url.includes("/api/proj") && window.projectKey) {
+			headerOptions["project_key"] = window.projectKey
+		}
+
 		// 构造请求参数
 		const axiosRequestConfig = {
 			url: `${this.baseUrl}${url}`,
 			method,
-			headers: {
-				...headers,
-				s_sign: sign,
-				s_t: st,
-			},
+			headers: headerOptions,
 			timeout,
 		}
 		if (["get", "delete", "put"].includes(method.toLowerCase())) {
@@ -53,6 +59,8 @@ class AxiosRequest {
 						ElMessage.error("请求参数异常")
 					} else if (code === 10002) {
 						ElMessage.error("请求不合法")
+					} else if (code === 446) {
+						ElMessage.error("项目请求参数不合法")
 					} else {
 						ElMessage.error(message || errMessage)
 					}

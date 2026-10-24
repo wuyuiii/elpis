@@ -32,7 +32,34 @@ module.exports = {
 			moduleType: "schema",
 			schemaConfig: {
 				api: "/api/client",
-				schema: {},
+				schema: {
+					type: "object",
+					properties: {
+						row1: {
+							label: "1",
+							type: "string",
+							tableOptions: {
+								visible: true,
+							},
+						},
+					},
+				},
+				tableConfig: {
+					headerButtons: [
+						{
+							label: "headerBtn", // 按钮名称
+							eventKey: "click", // 按钮事件名
+							enventOptions: {}, // 按钮事件配置
+						},
+					],
+					rowButtons: [
+						{
+							label: "rowBtn", // 按钮名称
+							eventKey: "click", // 按钮事件名
+							enventOptions: {}, // 按钮事件配置
+						},
+					],
+				},
 			},
 		},
 		{

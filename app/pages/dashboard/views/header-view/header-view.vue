@@ -6,6 +6,7 @@ import { ref, watch } from "vue"
 import { useMenuStore } from "../../store/menu.js"
 import { useProjectStore } from "../../store/project.js"
 import { useRoute } from "vue-router"
+import { PRE_PATH } from "../../router/index.js"
 
 defineProps({
   projectName: {
@@ -13,6 +14,7 @@ defineProps({
     default: "",
   },
 })
+
 
 const emit = defineEmits(["menu-select"])
 
@@ -53,9 +55,9 @@ const handleCommand = (value) => {
 
   if (!projectItem || !projectItem.homePage) return
 
-  const { origin, pathname } = window.location
-  window.location.replace(`${origin}${pathname}#${projectItem.homePage}`)
-  window.location.reload()
+  const { origin } = window.location
+
+  window.location.replace(`${origin}${PRE_PATH}${projectItem.homePage}`)
 }
 </script>
 

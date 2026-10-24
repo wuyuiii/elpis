@@ -37,6 +37,8 @@ module.exports = (app) => {
 		}
 		await next()
 	})
+
+	// TODO：不存在的API路由应该直接返回404
 	// 处理路由兜底 -- 健壮性
 	// path-to-regexp@8 不再支持裸 "*", 改用命名通配符 "*splat"
 	router.get("*splat", async (ctx, _next) => {

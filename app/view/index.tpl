@@ -6,6 +6,8 @@
 		<title>{{ name }}</title>
 	</head>
 	<body>
+
+		<input style="display: none" id="projectKey" value="{{ projectKey }}" />
 		<input style="display: none" id="options" value="{{ options }}" />
 		<input style="display: none" id="env" value="{{ env }}" />
 
@@ -14,6 +16,7 @@
 
 	<script>
 		window.env = document.getElementById("env").value
+		window.projectKey = document.getElementById("projectKey").value
 		window.options = JSON.parse(document.getElementById("options").value)
 	</script>
 </html>
